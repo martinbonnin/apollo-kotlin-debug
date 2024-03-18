@@ -95,6 +95,7 @@ class WatcherTest {
       }
 
       assertEquals(channel.receiveOrTimeout()?.hero?.name, "R2-D2")
+      println("artoo")
 
       // Another newer call gets updated information with "Artoo"
       apolloClient.query(query).fetchPolicy(FetchPolicy.NetworkOnly).execute()

@@ -190,11 +190,13 @@ fun <D : Query.Data> ApolloCall<D>.watch(): Flow<ApolloResponse<D>> {
         .watchInternal(response?.data)
         .collect {
           if (it.exception === WatcherSentinel) {
+            println("sentinel")
             if (lastResponse != null) {
               emit(lastResponse!!)
               lastResponse = null
             }
           } else {
+            println("item")
             emit(it)
           }
         }
