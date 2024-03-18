@@ -89,6 +89,7 @@ class WatcherTest {
       val job = launch(start = CoroutineStart.UNDISPATCHED) {
         val flow =  apolloClient.query(query).fetchPolicy(FetchPolicy.NetworkOnly).watch()
         flow.collect {
+          println("got " + it.data?.hero?.name)
           channel.send(it.data)
         }
       }
