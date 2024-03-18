@@ -46,6 +46,7 @@ internal class DefaultApolloStore(
   private val lock = Lock()
 
   override fun publish(keys: Set<String>) {
+    println("publish: $keys")
     if (keys.isEmpty()) {
       return
     }
